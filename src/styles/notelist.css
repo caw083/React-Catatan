@@ -1,0 +1,187 @@
+/* NoteList.css - Futuristic Design */
+
+.note-list-section {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.note-list-title {
+    color: #f1f5f9;
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0 0 24px 0;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(14, 165, 233, 0.05));
+    border-left: 4px solid #38bdf8;
+    border-radius: 0 8px 8px 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.note-list-title::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(56, 189, 248, 0.1) 50%,
+        transparent 70%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.note-list-title::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: #38bdf8;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px #38bdf8,
+        0 0 20px #38bdf8,
+        0 0 30px #38bdf8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.5);
+        opacity: 0.5;
+    }
+}
+
+.note-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 48px 24px;
+    color: #64748b;
+    font-size: 16px;
+    font-style: italic;
+    background: rgba(15, 23, 42, 0.3);
+    border: 2px dashed rgba(100, 116, 139, 0.3);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.empty-message::before {
+    content: '∅';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    color: rgba(56, 189, 248, 0.05);
+    font-weight: 700;
+    font-style: normal;
+}
+
+.empty-message-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* Section divider with holographic effect */
+.note-list-section + .note-list-section {
+    margin-top: 60px;
+    padding-top: 40px;
+    position: relative;
+}
+
+.note-list-section + .note-list-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(56, 189, 248, 0.3) 20%,
+        rgba(56, 189, 248, 0.6) 50%,
+        rgba(56, 189, 248, 0.3) 80%,
+        transparent
+    );
+}
+
+.note-list-section + .note-list-section::after {
+    content: '◆';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #38bdf8;
+    font-size: 16px;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+    background: #0f172a;
+    padding: 0 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .note-list-title {
+        font-size: 22px;
+        letter-spacing: 2px;
+        padding: 12px 16px;
+    }
+    
+    .empty-message {
+        padding: 32px 16px;
+    }
+    
+    .empty-message::before {
+        font-size: 80px;
+    }
+}
+
+/* Loading animation for when notes are being fetched */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.note-list-items > * {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.note-list-items > *:nth-child(1) { animation-delay: 0.05s; }
+.note-list-items > *:nth-child(2) { animation-delay: 0.1s; }
+.note-list-items > *:nth-child(3) { animation-delay: 0.15s; }
+.note-list-items > *:nth-child(4) { animation-delay: 0.2s; }
+.note-list-items > *:nth-child(5) { animation-delay: 0.25s; }
