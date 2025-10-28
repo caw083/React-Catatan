@@ -48,6 +48,12 @@
     transform: translateX(4px);
 }
 
+.note-link {
+    text-decoration: none;
+    display: block;
+    color: inherit;
+}
+
 .note-title {
     margin: 0 0 8px 0;
     color: #f1f5f9;
@@ -58,6 +64,7 @@
     transition: color 0.3s ease;
 }
 
+.note-link:hover .note-title,
 .note-item-container:hover .note-title {
     color: #38bdf8;
     text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
